@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<ul id="pokemonList"></ul>
+</body>
+<script>
+    const url = "https://pokeapi.co/api/v2/pokemon/";
+    let offset = 0;
+    const limit = 20;
+
+    const getPokemonList = async (name) => {
+        try {
+            const response = await fetch(`${url}?offset=${offset}&limit=${limit}` + name);
+            const data = await response.json();
+            const pokemonList = document.getElementById('pokemonList');
+            pokemonList.innerHTML = '';
+
+            const info = data.results;
+
+            console.log(info)
+
+            data.results.forEach(pokemon => {
+                 const listItem = document.createElement('li');
+                 const img = document.createElement('img');
+
+                 img.innerHTML = `
+                 <img alt=${pokemon.name}/>
+                 `
+
+                 listItem.textContent = `name: ${pokemon.name}`;
+
+                 pokemonList.appendChild(img);
+                 pokemonList.appendChild(listItem);
+            });
+        } catch (e) {
+            alert(`Error ${e}`);
+        }
+    };
+
+   getPokemonList();
+
+</script>
+</html>

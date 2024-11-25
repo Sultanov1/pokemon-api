@@ -1,0 +1,31 @@
+#pokemonList {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto auto;
+    gap: 10px;
+    padding: 0;
+    margin: 15px 0 50px 0;
+}
+
+#pokemonList li {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#pokemonItem li {
+    padding: 10px 0;
+}
+
+
+
+
+
+
